@@ -15,17 +15,22 @@ const displayDate = () => {
  
 
 // Write a JavaScript program to convert a number to a string.
-let num = 420;
-let string = num.toString()
+const num2Str = () => {
+  let num = document.getElementById('num2str').value;
+  let parsednum = Number(num)
+  document.getElementById('numtostring').innerHTML = 'Converted value is "' + parsednum + '"'
+}
 
-console.log(num)
-console.log(string)
 
 
 // Write a JavaScript program to convert a string to the number.
+const strToNum = () => {
+  let stringtonumber = document.getElementById('str2num').value;
+  let parsedstring = stringtonumber.slice(1, -1);
+  let stringtoint = parseInt(parsedstring)
+  document.getElementById('stringtonum').innerHTML = 'Converted value is ' + stringtoint;
+}
 
-let a = Number("100")
-console.log(a)
 
 // Write a JavaScript program that takes in different datatypes and prints out whether they are a:
   // * Boolean
@@ -35,44 +40,80 @@ console.log(a)
   // * NaN
   // * String
   
+const checkType = () => {
+  let inputData = document.getElementById('dataInput').value;
+  let resultElement = document.getElementById('result');
+  let dataType;
 
-const type = (data) => {
-  console.log(typeof data);
+  if (inputData === 'true' || inputData === 'false') {
+    dataType = 'Boolean';
+  } else if (inputData === 'null') {
+    dataType = 'Null';
+  } else if (inputData === 'undefined') {
+    dataType = 'Undefined';
+  } else if (!isNaN(parseInt(inputData))) {
+    dataType = 'Number';
+  } else if (isNaN(parseInt(inputData))) {
+    dataType = 'NaN';
+  } else if (typeof inputData === 'string') {
+    dataType = 'String';
+  } else {
+    dataType = 'Type not recognized.';
+  }
+  resultElement.textContent = inputData + ' is a ' + dataType + '.';
 }
+    
+  
+
   
 // Write a JavaScript program that adds 2 numbers together.
 
-const sum = (num1, num2) => {
-  let value = num1 + num2;
-    console.log(value)
+const sum = () => {
+  let add1 = document.getElementById('value1').value;
+  let add2 = document.getElementById('value2').value;
+  let parsed1 = parseInt(add1)
+  let parsed2 = parseInt(add2)
+  let sum = parsed1 + parsed2
+  
+  document.getElementById("add").innerHTML = 'The sum is a ' + sum + '.';
 }
 // Write a JavaScript program that runs only when 2 things are true.
 
-const tooTrue = (thing1, thing2) => {
-  if (thing1 === true && thing2 === true) {
-    console.log('Both things are true')
+const twoTrue = () => {
+  let thing1 = document.getElementById('bool1').value;
+  let thing2 = document.getElementById('bool2').value;
+
+  if (thing1 === 'true' && thing2 === 'true') {
+    document.getElementById('both').innerHTML = 'Both are true'
   } else {
-    return
+    document.getElementById('both').innerHTML = 'Something is false'
   }
 }
 
 // Write a JavaScript program that runs when 1 of 2 things are true.
 
-const oneTrue = (thing1, thing2) => {
-  if (thing1 === true || thing2 === true) {
-    console.log('One thing is true')
+const oneTrue = () => {
+  let thing1 = document.getElementById('bool3').value;
+  let thing2 = document.getElementById('bool4').value;
+
+  if (thing1 === 'true' || thing2 === 'true') {
+    document.getElementById('one').innerHTML = 'At least one is true'
   } else {
-    return
+    document.getElementById('one').innerHTML = 'Both are false'
   }
 }
 
 // Write a JavaScript program that runs when both things are not true.  
 
-const noTrue = (thing1, thing2) => {
-  if (thing1 !== true || thing2 !== true) {
-    console.log('nothing is true')
+const noTrue = () => {
+
+  let thing1 = document.getElementById('bool5').value;
+  let thing2 = document.getElementById('bool6').value;
+
+  if (thing1 !== 'true' && thing2 !== 'true') {
+    document.getElementById('none').innerHTML = 'nothing is true'
   } else {
-    return
+    document.getElementById('none').innerHTML = 'At least one is true'
   }
 }
 
